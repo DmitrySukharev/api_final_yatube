@@ -92,12 +92,12 @@ class TestPostAPI:
         assert len(test_data.get('results')) == Post.objects.count() - offset, (
             f'Проверьте, что при GET запросе на `{url}` с пагинацией, возвращается корректное количество статей'
         )
-        assert test_data.get('results')[0].get('text') == another_post.text, (
+        assert test_data.get('results')[0].get('text') == post.text, (
             f'Убедитесь, что при GET запросе на `{url}` с пагинацией, '
             'в ответе содержатся корректные статьи'
         )
 
-        post = Post.objects.get(text=another_post.text)
+        post = Post.objects.get(text=post.text)
         test_post = test_data.get('results')[0]
         assert 'id' in test_post, (
             'Проверьте, что добавили `id` в список полей `fields` сериализатора модели Post'

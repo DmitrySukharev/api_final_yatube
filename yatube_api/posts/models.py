@@ -37,6 +37,9 @@ class Post(models.Model):
         verbose_name='Группа'
     )
 
+    class Meta:
+        ordering = ('-pub_date',)
+
     def __str__(self):
         return self.text[:20]
 
@@ -58,6 +61,9 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name='comments',
         verbose_name='Пост')
+
+    class Meta:
+        ordering = ('-created',)
 
     def __str__(self):
         return self.text[:20]

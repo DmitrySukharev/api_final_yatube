@@ -1,3 +1,4 @@
+from time import sleep
 import pytest
 
 
@@ -22,6 +23,7 @@ def post(user, group_1):
 @pytest.fixture
 def post_2(user, group_1):
     from posts.models import Post
+    sleep(0.001)
     return Post.objects.create(text='Тестовый пост 12342341', author=user, group=group_1)
 
 
@@ -40,6 +42,7 @@ def comment_2_post(post, another_user):
 @pytest.fixture
 def another_post(another_user, group_2):
     from posts.models import Post
+    sleep(0.001)
     return Post.objects.create(text='Тестовый пост 2', author=another_user, group=group_2)
 
 
