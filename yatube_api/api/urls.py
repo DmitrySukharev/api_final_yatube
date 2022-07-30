@@ -15,5 +15,6 @@ router_1.register(
 urlpatterns = [
     path('', include(router_1.urls)),
     path('v1/follow/', FollowListCreate.as_view(), name='follow'),
+    # Эндпойнт для управления JWT токенами, требуется по ТЗ
     path('v1/', include('djoser.urls.jwt')),
 ]
